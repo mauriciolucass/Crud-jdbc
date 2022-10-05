@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import dao.UserAgendeiDAO;
+import model.Telefone;
 import model.userAgendei;
 
 public class AgendeiTes {
@@ -75,4 +76,18 @@ public class AgendeiTes {
 	}
 	  
   }
+  @Test
+  public void inttelefone() {
+	  Telefone telefone = new Telefone();
+	  telefone.setNumero("(86)99425-1245");
+	  telefone.setTopo("casa");
+	  telefone.setUsuario(4L);
+	  
+	  UserAgendeiDAO dao = new UserAgendeiDAO();
+	  dao.salvartelefone(telefone);
+	  
+	  
+	  
+  }
+  
 }

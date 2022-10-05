@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.ConecxaoAgendei;
+import model.Telefone;
 import model.userAgendei;
 
 public class UserAgendeiDAO {
@@ -117,6 +118,29 @@ public class UserAgendeiDAO {
 		}
 		
 		
+	}
+	public void salvartelefone(Telefone telefone) {
+		String sql = "INSERT INTO public.telefoneuser( numero, topo, usuariopessoa)VALUES (?,?, ?)";
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, telefone.getNumero() );
+			statement.setString(2, telefone.getTopo());
+			statement.setLong(3, telefone.getUsuario());
+			
+			statement.execute();
+			connection.commit();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 
 }
